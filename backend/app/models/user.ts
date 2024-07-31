@@ -1,3 +1,4 @@
+import type { UserInterface, UserRole } from 'types/dist/user.js'
 import { DateTime } from 'luxon'
 import { compose } from '@adonisjs/core/helpers'
 import { BaseModel, beforeCreate, column } from '@adonisjs/lucid/orm'
@@ -11,7 +12,7 @@ const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   passwordColumnName: 'password',
 })
 
-export default class User extends compose(BaseModel, AuthFinder) {
+export default class User extends compose(BaseModel, AuthFinder) implements UserInterface {
   static readonly selfAssignPrimaryKey = true
 
   @column({ isPrimary: true })
@@ -25,6 +26,9 @@ export default class User extends compose(BaseModel, AuthFinder) {
 
   @column({ serializeAs: null })
   declare password: string
+
+  @column()
+  declare role: UserRole
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

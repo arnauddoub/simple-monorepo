@@ -1,4 +1,8 @@
 {
   "name": "my-monorepo",
-  "private": true
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter=backend --filter=frontend --stream --parallel run dev",
+    "build:types": "pnpm --filter=types run build"
+  }
 }

@@ -34,6 +34,9 @@ importers:
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
+      types:
+        specifier: workspace:^
+        version: link:../packages/types
     devDependencies:
       '@adonisjs/assembler':
         specifier: ^7.7.0
@@ -92,6 +95,9 @@ importers:
       pinia:
         specifier: ^2.1.7
         version: 2.2.0(typescript@5.4.5)(vue@3.4.35(typescript@5.4.5))
+      types:
+        specifier: workspace:^
+        version: link:../packages/types
       vue:
         specifier: ^3.4.29
         version: 3.4.35(typescript@5.4.5)
@@ -141,6 +147,15 @@ importers:
       vue-tsc:
         specifier: ^2.0.21
         version: 2.0.29(typescript@5.4.5)
+
+  packages/types:
+    dependencies:
+      '@types/luxon':
+        specifier: ^3.4.2
+        version: 3.4.2
+      typescript:
+        specifier: ^5.5.4
+        version: 5.5.4
 
 packages:
 
@@ -3301,6 +3316,11 @@ packages:
 
   typescript@5.4.5:
     resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+  typescript@5.5.4:
+    resolution: {integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -6756,6 +6776,8 @@ snapshots:
       typed-array-byte-offset: 1.0.2
 
   typescript@5.4.5: {}
+
+  typescript@5.5.4: {}
 
   uid-safe@2.1.5:
     dependencies:
