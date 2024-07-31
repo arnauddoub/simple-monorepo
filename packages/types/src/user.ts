@@ -12,4 +12,6 @@ export interface UserInterface {
 export enum UserRole {
   ADMIN = "admin",
   USER = "user",
-} 
+}
+
+export type UserListResponse = UserInterface[]
