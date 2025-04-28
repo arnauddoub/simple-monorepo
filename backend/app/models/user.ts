@@ -1,4 +1,4 @@
-import type { UserInterface, UserRole } from 'types/dist/user.js'
+import type { User as UserInterface, UserRole } from '@my-monorepo/types'
 import { DateTime } from 'luxon'
 import { compose } from '@adonisjs/core/helpers'
 import { BaseModel, beforeCreate, column } from '@adonisjs/lucid/orm'

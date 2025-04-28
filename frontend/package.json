@@ -13,10 +13,10 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@my-monorepo/types": "workspace:^",
     "@tanstack/vue-query": "^5.51.16",
     "@vueuse/core": "^10.11.0",
     "pinia": "^2.1.7",
-    "types": "workspace:^",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3"
   },

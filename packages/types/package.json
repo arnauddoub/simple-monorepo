@@ -1,15 +1,9 @@
 {
-  "name": "types",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc"
-  },
-  "dependencies": {
+  "name": "@my-monorepo/types",
+  "version": "0.0.0",
+  "main": "src/index.ts",
+  "devDependencies": {
     "@types/luxon": "^3.4.2",
-    "typescript": "^5.5.4"
+    "typescript": "catalog:"
   }
 }
