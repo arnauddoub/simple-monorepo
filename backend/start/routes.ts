@@ -9,7 +9,7 @@
 
 import router from '@adonisjs/core/services/router'
 
-const UsersController = () => import('#controllers/users_controller')
+const UsersController = () => import('#user/users_controller')
 
 router.get('/', async () => {
   return {
@@ -17,4 +17,4 @@ router.get('/', async () => {
   }
 })
 
-router.get('/users', [UsersController, 'index'])
+router.resource('users', UsersController).apiOnly()

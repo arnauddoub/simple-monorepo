@@ -1,5 +1,5 @@
 {
-  "name": "@my-monorepo/types",
+  "name": "@my-monorepo/validators",
   "version": "0.0.0",
   "type": "module",
   "main": "src/index.ts",
@@ -8,6 +8,7 @@
     "typescript": "catalog:"
   },
   "dependencies": {
-    "@my-monorepo/validators": "workspace:^"
+    "@my-monorepo/types": "workspace:^",
+    "@vinejs/vine": "^3.0.1"
   }
 }

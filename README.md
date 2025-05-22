@@ -1,4 +1,4 @@
-# my-monorepo
+# simple-monorepo
 
 This project is a monorepo that combines a backend built with AdonisJS and a frontend developed with Vue.js. It uses shared TypeScript types to ensure consistency of data and interfaces across different parts of the application.
 
@@ -37,5 +37,5 @@ pnpm dev
 ## Technologies Used
 
 - **Backend**: AdonisJS, PostgreSQL
-- **Frontend**: Vue.js, Vue Router, Pinia, PrimeVue, Tailwind CSS, TanStack Query
+- **Frontend**: Vue.js, Vue Router, Pinia, TanStack Query
 - **Build Tools**: Vite, pnpm
