@@ -1,4 +1,4 @@
-import { UserRole } from 'types/dist/user.js'
+import { UserRole } from '@my-monorepo/types'
 import factory from '@adonisjs/lucid/factories'
 import User from '#models/user'
 

@@ -1,6 +1,7 @@
 {
   "name": "@my-monorepo/types",
   "version": "0.0.0",
+  "type": "module",
   "main": "src/index.ts",
   "devDependencies": {
     "@types/luxon": "^3.4.2",

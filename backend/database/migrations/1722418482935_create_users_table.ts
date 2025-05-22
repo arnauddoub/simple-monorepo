@@ -1,5 +1,5 @@
 import { BaseSchema } from '@adonisjs/lucid/schema'
-import { UserRole } from 'types/dist/user.js'
+import { UserRole } from '@my-monorepo/types'
 
 export default class extends BaseSchema {
   protected tableName = 'users'
