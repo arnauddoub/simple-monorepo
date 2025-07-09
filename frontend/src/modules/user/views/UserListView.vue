@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import useUserQuery from '@/modules/user/composables/useUserQuery'
+import { useGetUsers } from '@/modules/user/composables/useUserQuery'
 
-const { useGetUsers } = useUserQuery()
 const { data: users } = useGetUsers()
 </script>
 

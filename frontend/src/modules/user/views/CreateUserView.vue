@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import type { CreateUser } from '@my-monorepo/types'
+import  { type CreateUser, UserRole } from '@my-monorepo/types'
 import { useRouter } from 'vue-router'
 import { reactive } from 'vue'
-import { UserRole } from '@my-monorepo/types'
-import useUserQuery from '@/modules/user/composables/useUserQuery'
+import { useCreateUser } from '@/modules/user/composables/useUserQuery'
 
 const router = useRouter()
-const { useCreateUser } = useUserQuery()
 const { mutate: createUser } = useCreateUser()
 
 const form = reactive<CreateUser>({
