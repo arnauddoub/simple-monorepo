@@ -1,4 +1,4 @@
-import type { CreateUserValidator, UpdateUserValidator } from '@my-monorepo/validators'
+import type { CreateUserValidator, UpdateUserValidator } from '#user/user_validator'
 import { inject } from '@adonisjs/core'
 import UserRepository from '#user/user_repository'
 

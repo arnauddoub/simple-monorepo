@@ -15,4 +15,4 @@ router.get('/', () => {
   return { hello: 'world' }
 })
 
-router.resource('users', UsersController).apiOnly()
+router.resource('users', UsersController).apiOnly().where('id', router.matchers.uuid())

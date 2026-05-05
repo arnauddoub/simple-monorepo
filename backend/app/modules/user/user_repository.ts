@@ -1,4 +1,4 @@
-import type { CreateUserValidator, UpdateUserValidator } from '@my-monorepo/validators'
+import type { CreateUserValidator, UpdateUserValidator } from '#user/user_validator'
 import User from '#user/user_model'
 
 export default class UserRepository {

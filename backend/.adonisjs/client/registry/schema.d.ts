@@ -23,10 +23,10 @@ export interface Registry {
     methods: ["POST"]
     pattern: '/users'
     types: {
-      body: ExtractBody<InferInput<(typeof import('@my-monorepo/validators').createUserValidator)>>
+      body: ExtractBody<InferInput<(typeof import('#user/user_validator').createUserValidator)>>
       paramsTuple: []
       params: {}
-      query: ExtractQuery<InferInput<(typeof import('@my-monorepo/validators').createUserValidator)>>
+      query: ExtractQuery<InferInput<(typeof import('#user/user_validator').createUserValidator)>>
       response: ExtractResponse<Awaited<ReturnType<import('#user/users_controller').default['store']>>>
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#user/users_controller').default['store']>>> | { status: 422; response: { errors: SimpleError[] } }
     }
@@ -47,10 +47,10 @@ export interface Registry {
     methods: ["PUT","PATCH"]
     pattern: '/users/:id'
     types: {
-      body: ExtractBody<InferInput<(typeof import('@my-monorepo/validators').updateUserValidator)>>
+      body: ExtractBody<InferInput<(typeof import('#user/user_validator').updateUserValidator)>>
       paramsTuple: [ParamValue]
       params: { id: ParamValue }
-      query: ExtractQuery<InferInput<(typeof import('@my-monorepo/validators').updateUserValidator)>>
+      query: ExtractQuery<InferInput<(typeof import('#user/user_validator').updateUserValidator)>>
       response: ExtractResponse<Awaited<ReturnType<import('#user/users_controller').default['update']>>>
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#user/users_controller').default['update']>>> | { status: 422; response: { errors: SimpleError[] } }
     }

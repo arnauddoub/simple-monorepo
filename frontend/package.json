@@ -15,7 +15,6 @@
   "dependencies": {
     "@my-monorepo/backend": "workspace:^",
     "@my-monorepo/contracts": "workspace:^",
-    "@my-monorepo/validators": "workspace:^",
     "@tanstack/vue-query": "^5.76.0",
     "@vueuse/core": "^13.2.0",
     "pinia": "^3.0.2",

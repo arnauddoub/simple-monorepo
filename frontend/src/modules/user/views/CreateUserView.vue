@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { CreateUserValidator } from '@my-monorepo/validators'
+import type { ApiBody } from '@/composables/useApi'
 import { UserRole } from '@my-monorepo/contracts'
 import { useRouter } from 'vue-router'
 import { reactive } from 'vue'
@@ -8,7 +8,7 @@ import { useCreateUser } from '@/modules/user/composables/useUserQuery'
 const router = useRouter()
 const { mutate: createUser } = useCreateUser()
 
-const form = reactive<CreateUserValidator>({
+const form = reactive<ApiBody<'users.store'>>({
   fullName: '',
   email: '',
   password: '',

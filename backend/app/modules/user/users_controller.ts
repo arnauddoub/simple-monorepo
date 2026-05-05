@@ -1,6 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import { inject } from '@adonisjs/core'
-import { createUserValidator, updateUserValidator } from '@my-monorepo/validators'
+import { createUserValidator, updateUserValidator } from '#user/user_validator'
 import UserService from '#user/user_service'
 import UserTransformer from '#user/user_transformer'
 
@@ -25,7 +25,9 @@ export default class UsersController {
   }
 
   async update({ params, request, serialize }: HttpContext) {
-    const payload = await request.validateUsing(updateUserValidator)
+    const payload = await request.validateUsing(updateUserValidator, {
+      meta: { userId: params.id },
+    })
     const user = await this.userService.updateUser(params.id, payload)
     return serialize(UserTransformer.transform(user))
   }
