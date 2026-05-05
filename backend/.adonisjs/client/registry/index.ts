@@ -1,0 +1,53 @@
+/* eslint-disable prettier/prettier */
+import type { AdonisEndpoint } from '@tuyau/core/types'
+import type { Registry } from './schema.d.ts'
+import type { ApiDefinition } from './tree.d.ts'
+
+const placeholder: any = {}
+
+const routes = {
+  'users.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/users',
+    tokens: [{"old":"/users","type":0,"val":"users","end":""}],
+    types: placeholder as Registry['users.index']['types'],
+  },
+  'users.store': {
+    methods: ["POST"],
+    pattern: '/users',
+    tokens: [{"old":"/users","type":0,"val":"users","end":""}],
+    types: placeholder as Registry['users.store']['types'],
+  },
+  'users.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/users/:id',
+    tokens: [{"old":"/users/:id","type":0,"val":"users","end":""},{"old":"/users/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['users.show']['types'],
+  },
+  'users.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/users/:id',
+    tokens: [{"old":"/users/:id","type":0,"val":"users","end":""},{"old":"/users/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['users.update']['types'],
+  },
+  'users.destroy': {
+    methods: ["DELETE"],
+    pattern: '/users/:id',
+    tokens: [{"old":"/users/:id","type":0,"val":"users","end":""},{"old":"/users/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['users.destroy']['types'],
+  },
+} as const satisfies Record<string, AdonisEndpoint>
+
+export { routes }
+
+export const registry = {
+  routes,
+  $tree: {} as ApiDefinition,
+}
+
+declare module '@tuyau/core/types' {
+  export interface UserRegistry {
+    routes: typeof routes
+    $tree: ApiDefinition
+  }
+}

@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "type": "module",
   "main": "src/index.ts",
+  "sideEffects": false,
   "devDependencies": {
     "@types/luxon": "^3.4.2",
     "typescript": "catalog:"
   },
   "dependencies": {
-    "@my-monorepo/types": "workspace:^",
-    "@vinejs/vine": "^3.0.1"
+    "@my-monorepo/contracts": "workspace:^",
+    "@vinejs/vine": "^4.4.0"
   }
 }

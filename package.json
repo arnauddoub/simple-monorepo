@@ -2,6 +2,11 @@
   "name": "my-monorepo",
   "private": true,
   "scripts": {
-    "dev": "pnpm --filter=backend --filter=frontend --parallel run dev"
+    "dev": "pnpm --filter=@my-monorepo/backend --filter=@my-monorepo/frontend --parallel run dev"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite": "npm:rolldown-vite@latest"
+    }
   }
 }

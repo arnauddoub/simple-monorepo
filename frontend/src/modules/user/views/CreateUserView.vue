@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import  { type CreateUser, UserRole } from '@my-monorepo/types'
+import type { CreateUserValidator } from '@my-monorepo/validators'
+import { UserRole } from '@my-monorepo/contracts'
 import { useRouter } from 'vue-router'
 import { reactive } from 'vue'
 import { useCreateUser } from '@/modules/user/composables/useUserQuery'
@@ -7,11 +8,11 @@ import { useCreateUser } from '@/modules/user/composables/useUserQuery'
 const router = useRouter()
 const { mutate: createUser } = useCreateUser()
 
-const form = reactive<CreateUser>({
+const form = reactive<CreateUserValidator>({
   fullName: '',
   email: '',
   password: '',
-  role: UserRole.USER
+  role: UserRole.USER,
 })
 
 function submit() {

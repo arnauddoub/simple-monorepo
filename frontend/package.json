@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "@my-monorepo/frontend",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -13,7 +13,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@my-monorepo/types": "workspace:^",
+    "@my-monorepo/backend": "workspace:^",
+    "@my-monorepo/contracts": "workspace:^",
     "@my-monorepo/validators": "workspace:^",
     "@tanstack/vue-query": "^5.76.0",
     "@vueuse/core": "^13.2.0",
@@ -36,10 +37,5 @@
     "typescript": "catalog:",
     "vite": "^5.3.1",
     "vue-tsc": "^2.0.21"
-  },
-  "pnpm": {
-    "overrides": {
-      "vite": "npm:rolldown-vite@latest"
-    }
   }
 }

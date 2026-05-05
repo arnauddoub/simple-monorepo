@@ -1,12 +1,12 @@
 import { BaseSchema } from '@adonisjs/lucid/schema'
-import { UserRole } from '@my-monorepo/types'
+import { UserRole } from '@my-monorepo/contracts'
 
 export default class extends BaseSchema {
   protected tableName = 'users'
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.uuid('id').primary().notNullable()
+      table.uuid('id').primary().defaultTo(this.raw('gen_random_uuid()'))
       table.string('full_name').notNullable()
       table.string('email', 254).notNullable().unique()
       table.string('password').notNullable()

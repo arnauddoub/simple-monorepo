@@ -1,8 +1,8 @@
 import type { Infer } from '@vinejs/vine/types'
-import { UserRole } from '@my-monorepo/types'
 import vine from '@vinejs/vine'
+import { UserRole } from '@my-monorepo/contracts'
 
-export const createUserValidator = vine.compile(
+export const createUserValidator = vine.create(
   vine.object({
     fullName: vine.string(),
     email: vine.string().email(),
@@ -12,7 +12,7 @@ export const createUserValidator = vine.compile(
 )
 export type CreateUserValidator = Infer<typeof createUserValidator>
 
-export const updateUserValidator = vine.compile(
+export const updateUserValidator = vine.create(
   vine.object({
     fullName: vine.string().optional(),
     email: vine.string().email().optional(),

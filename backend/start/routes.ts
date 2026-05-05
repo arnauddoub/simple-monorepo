@@ -11,10 +11,8 @@ import router from '@adonisjs/core/services/router'
 
 const UsersController = () => import('#user/users_controller')
 
-router.get('/', async () => {
-  return {
-    hello: 'world',
-  }
+router.get('/', () => {
+  return { hello: 'world' }
 })
 
 router.resource('users', UsersController).apiOnly()

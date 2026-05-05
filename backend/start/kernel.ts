@@ -23,8 +23,8 @@ server.errorHandler(() => import('#exceptions/handler'))
  * the request URL.
  */
 server.use([
-  () => import('#middleware/container_bindings_middleware'),
   () => import('#middleware/force_json_response_middleware'),
+  () => import('#middleware/container_bindings_middleware'),
   () => import('@adonisjs/cors/cors_middleware'),
 ])
 
@@ -32,7 +32,11 @@ server.use([
  * The router middleware stack runs middleware on all the HTTP
  * requests with a registered route.
  */
-router.use([() => import('@adonisjs/core/bodyparser_middleware')])
+router.use([
+  () => import('@adonisjs/core/bodyparser_middleware'),
+  () => import('@adonisjs/session/session_middleware'),
+  () => import('@adonisjs/shield/shield_middleware'),
+])
 
 /**
  * Named middleware collection must be explicitly assigned to

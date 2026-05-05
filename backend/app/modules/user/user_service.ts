@@ -1,4 +1,4 @@
-import type { CreateUser, UpdateUser } from '@my-monorepo/types'
+import type { CreateUserValidator, UpdateUserValidator } from '@my-monorepo/validators'
 import { inject } from '@adonisjs/core'
 import UserRepository from '#user/user_repository'
 
@@ -7,22 +7,22 @@ export default class UserService {
   constructor(private userRepository: UserRepository) {}
 
   async getAllUsers() {
-    return this.userRepository.getAllUsers()
+    return this.userRepository.getAll()
   }
 
   async getUserById(id: string) {
-    return this.userRepository.getUserById(id)
+    return this.userRepository.getById(id)
   }
 
-  async createUser(user: CreateUser) {
-    return this.userRepository.createUser(user)
+  async createUser(payload: CreateUserValidator) {
+    return this.userRepository.create(payload)
   }
 
-  async updateUser(id: string, user: UpdateUser) {
-    return this.userRepository.updateUser(id, user)
+  async updateUser(id: string, payload: UpdateUserValidator) {
+    return this.userRepository.update(id, payload)
   }
 
   async deleteUser(id: string) {
-    return this.userRepository.deleteUser(id)
+    return this.userRepository.delete(id)
   }
 }

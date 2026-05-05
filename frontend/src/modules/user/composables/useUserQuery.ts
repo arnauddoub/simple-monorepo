@@ -1,4 +1,4 @@
-import type { Validator, UsersSchema } from '@my-monorepo/types'
+import type { Registry } from '@my-monorepo/backend/registry/schema'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 import { useApi } from '@/composables/useApi'
 
@@ -6,10 +6,12 @@ export function useGetUsers() {
   return useQuery({
     queryKey: ['users'],
     queryFn: async () => {
-      const { data, error } = await useApi('/users').get().json<ReturnType<UsersSchema['index']>>()
-      if (error.value) throw new Error()
-      return data.value
-    }
+      const { data, error } = await useApi('/users')
+        .get()
+        .json<Registry['users.index']['types']['response']>()
+      if (error.value || !data.value) throw new Error()
+      return data.value.data
+    },
   })
 }
 
@@ -17,10 +19,12 @@ export function useGetUserById(id: string) {
   return useQuery({
     queryKey: ['user', id],
     queryFn: async () => {
-      const { data, error } = await useApi(`/users/${id}`).get().json<ReturnType<UsersSchema['show']>>()
-      if (error.value) throw new Error()
-      return data.value
-    }
+      const { data, error } = await useApi(`/users/${id}`)
+        .get()
+        .json<Registry['users.show']['types']['response']>()
+      if (error.value || !data.value) throw new Error()
+      return data.value.data
+    },
   })
 }
 
@@ -28,10 +32,12 @@ export function useCreateUser() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: async (payload: Validator<UsersSchema['store']>) => {
-      const { data, error } = await useApi('/users').post(payload).json<ReturnType<UsersSchema['store']>>()
-      if (error.value) throw new Error()
-      return data.value
+    mutationFn: async (payload: Registry['users.store']['types']['body']) => {
+      const { data, error } = await useApi('/users')
+        .post(payload)
+        .json<Registry['users.store']['types']['response']>()
+      if (error.value || !data.value) throw new Error()
+      return data.value.data
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['users'] }),
   })
@@ -41,10 +47,12 @@ export function useUpdateUser(id: string) {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: async (payload: Validator<UsersSchema['update']>) => {
-      const { data, error } = await useApi(`/users/${id}`).put(payload).json<ReturnType<UsersSchema['update']>>()
-      if (error.value) throw new Error()
-      return data.value
+    mutationFn: async (payload: Registry['users.update']['types']['body']) => {
+      const { data, error } = await useApi(`/users/${id}`)
+        .put(payload)
+        .json<Registry['users.update']['types']['response']>()
+      if (error.value || !data.value) throw new Error()
+      return data.value.data
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] })
@@ -58,7 +66,9 @@ export function useDeleteUser(id: string) {
 
   return useMutation({
     mutationFn: async () => {
-      const { data, error } = await useApi(`/users/${id}`).delete().json<ReturnType<UsersSchema['destroy']>>()
+      const { data, error } = await useApi(`/users/${id}`)
+        .delete()
+        .json<Registry['users.destroy']['types']['response']>()
       if (error.value) throw new Error()
       return data.value
     },

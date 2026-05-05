@@ -1,0 +1,10 @@
+{
+  "name": "@my-monorepo/contracts",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "sideEffects": false,
+  "devDependencies": {
+    "typescript": "catalog:"
+  }
+}
