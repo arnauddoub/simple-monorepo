@@ -15,8 +15,8 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#user/users_controller').default['index']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#user/users_controller').default['index']>>>
+      response: ExtractResponse<Awaited<ReturnType<import('#user/controllers/list_users_controller').default['index']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#user/controllers/list_users_controller').default['index']>>>
     }
   }
   'users.store': {
@@ -27,8 +27,8 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: ExtractQuery<InferInput<(typeof import('#user/user_validator').createUserValidator)>>
-      response: ExtractResponse<Awaited<ReturnType<import('#user/users_controller').default['store']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#user/users_controller').default['store']>>> | { status: 422; response: { errors: SimpleError[] } }
+      response: ExtractResponse<Awaited<ReturnType<import('#user/controllers/create_user_controller').default['store']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#user/controllers/create_user_controller').default['store']>>> | { status: 422; response: { errors: SimpleError[] } }
     }
   }
   'users.show': {
@@ -39,20 +39,20 @@ export interface Registry {
       paramsTuple: [ParamValue]
       params: { id: ParamValue }
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#user/users_controller').default['show']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#user/users_controller').default['show']>>>
+      response: ExtractResponse<Awaited<ReturnType<import('#user/controllers/show_user_controller').default['show']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#user/controllers/show_user_controller').default['show']>>>
     }
   }
   'users.update': {
-    methods: ["PUT","PATCH"]
+    methods: ["PUT"]
     pattern: '/users/:id'
     types: {
       body: ExtractBody<InferInput<(typeof import('#user/user_validator').updateUserValidator)>>
       paramsTuple: [ParamValue]
       params: { id: ParamValue }
       query: ExtractQuery<InferInput<(typeof import('#user/user_validator').updateUserValidator)>>
-      response: ExtractResponse<Awaited<ReturnType<import('#user/users_controller').default['update']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#user/users_controller').default['update']>>> | { status: 422; response: { errors: SimpleError[] } }
+      response: ExtractResponse<Awaited<ReturnType<import('#user/controllers/update_user_controller').default['update']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#user/controllers/update_user_controller').default['update']>>> | { status: 422; response: { errors: SimpleError[] } }
     }
   }
   'users.destroy': {
@@ -63,8 +63,8 @@ export interface Registry {
       paramsTuple: [ParamValue]
       params: { id: ParamValue }
       query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#user/users_controller').default['destroy']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#user/users_controller').default['destroy']>>>
+      response: ExtractResponse<Awaited<ReturnType<import('#user/controllers/delete_user_controller').default['destroy']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#user/controllers/delete_user_controller').default['destroy']>>>
     }
   }
 }

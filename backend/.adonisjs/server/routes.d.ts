@@ -24,9 +24,6 @@ export type ScannedRoutes = {
   PUT: {
     'users.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
-  PATCH: {
-    'users.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
-  }
   DELETE: {
     'users.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }

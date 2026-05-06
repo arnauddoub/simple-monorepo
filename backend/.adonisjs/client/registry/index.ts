@@ -25,7 +25,7 @@ const routes = {
     types: placeholder as Registry['users.show']['types'],
   },
   'users.update': {
-    methods: ["PUT","PATCH"],
+    methods: ["PUT"],
     pattern: '/users/:id',
     tokens: [{"old":"/users/:id","type":0,"val":"users","end":""},{"old":"/users/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['users.update']['types'],

@@ -5,6 +5,10 @@
 
 export const controllers = {
   user: {
-    Users: () => import('#controllers/user/users_controller'),
+    CreateUser: () => import('#controllers/user/controllers/create_user_controller'),
+    DeleteUser: () => import('#controllers/user/controllers/delete_user_controller'),
+    ListUsers: () => import('#controllers/user/controllers/list_users_controller'),
+    ShowUser: () => import('#controllers/user/controllers/show_user_controller'),
+    UpdateUser: () => import('#controllers/user/controllers/update_user_controller'),
   },
 }
