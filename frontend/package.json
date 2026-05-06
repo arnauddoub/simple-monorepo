@@ -4,13 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vp dev",
     "build": "run-p type-check \"build-only {@}\" --",
-    "preview": "vite preview",
-    "build-only": "vite build",
+    "preview": "vp preview",
+    "build-only": "vp build",
     "type-check": "vue-tsc --build --force",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "lint": "vp lint --fix",
+    "format": "vp fmt --write"
   },
   "dependencies": {
     "@my-monorepo/backend": "workspace:^",
@@ -22,19 +22,14 @@
     "vue-router": "^4.3.3"
   },
   "devDependencies": {
-    "@rushstack/eslint-patch": "^1.8.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^22.15.21",
     "@vitejs/plugin-vue": "^6.0.6",
-    "@vue/eslint-config-prettier": "^10.2.0",
-    "@vue/eslint-config-typescript": "^14.5.0",
     "@vue/tsconfig": "^0.7.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^9.23.0",
     "npm-run-all2": "^6.2.0",
-    "prettier": "^3.2.5",
     "typescript": "catalog:",
-    "vite": "^8.0.10",
+    "vite": "catalog:",
+    "vite-plus": "catalog:",
     "vue-tsc": "^2.0.21"
   }
 }

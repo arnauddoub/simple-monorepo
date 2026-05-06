@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Ensure Node is on PATH for git GUI clients (Fork, GitKraken, etc.) that don't load the user's shell.
+export PATH="$HOME/.vite-plus/bin:$HOME/.volta/bin:$HOME/.local/share/mise/shims:$HOME/.asdf/shims:/opt/homebrew/bin:/usr/local/bin:$PATH"
+exec vp staged

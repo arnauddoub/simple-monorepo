@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useGetUsers } from '@/modules/user/composables/useUserQuery'
+import { useGetUsers } from '@/modules/user/composables/useUserQuery';
 
-const { data: users } = useGetUsers()
+const { data: users } = useGetUsers();
 </script>
 
 <template>

@@ -4,7 +4,7 @@ export const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'users.index',
-    component: () => import('@/modules/user/views/UserListView.vue')
+    component: () => import('@/modules/user/views/UserListView.vue'),
   },
   {
     path: '/users/:id',
@@ -15,5 +15,5 @@ export const routes: RouteRecordRaw[] = [
     path: '/users/create',
     name: 'users.create',
     component: () => import('@/modules/user/views/CreateUserView.vue'),
-  }
-]
+  },
+];

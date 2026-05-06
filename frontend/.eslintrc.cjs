@@ -1,5 +1,5 @@
 /* eslint-env node */
-require('@rushstack/eslint-patch/modern-module-resolution')
+require('@rushstack/eslint-patch/modern-module-resolution');
 
 module.exports = {
   root: true,
@@ -7,10 +7,10 @@ module.exports = {
     'plugin:vue/vue3-recommended',
     'eslint:recommended',
     '@vue/eslint-config-typescript',
-    '@vue/eslint-config-prettier'
+    '@vue/eslint-config-prettier',
   ],
   parserOptions: {
-    ecmaVersion: 'latest'
+    ecmaVersion: 'latest',
   },
   rules: {
     'vue/multi-word-component-names': 'off',
@@ -19,8 +19,8 @@ module.exports = {
     'vue/block-order': [
       'error',
       {
-        order: ['script', 'template', 'style']
-      }
-    ]
-  }
-}
+        order: ['script', 'template', 'style'],
+      },
+    ],
+  },
+};

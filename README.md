@@ -7,10 +7,8 @@ This project is a monorepo that combines a backend built with AdonisJS and a fro
 - **`backend/`**: Contains the source code for the backend developed with AdonisJS.
   - Manages routes, controllers, models, and middleware.
   - Uses TypeScript to type data and services.
-  
 - **`frontend/`**: Contains the source code for the frontend developed with Vue.js.
   - Includes Vue components, pages, and store management.
-  
 - **`packages/contracts/`**: Runtime values shared between frontend and backend (enums, constants).
   - Pure, framework-agnostic, importable from both Node and the browser.
 
@@ -23,6 +21,7 @@ pnpm install
 ```
 
 ### Setup Backend
+
 ```sh
 cd backend
 cp .env.example .env
