@@ -2,7 +2,8 @@
   "name": "my-monorepo",
   "private": true,
   "scripts": {
-    "dev": "vp run -r --parallel dev",
+    "dev": "pnpm build:packages && vp run -r --parallel dev",
+    "build:packages": "vp run -F './packages/*' build",
     "prepare": "vp config"
   },
   "devDependencies": {

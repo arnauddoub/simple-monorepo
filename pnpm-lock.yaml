@@ -3,6 +3,7 @@ lockfileVersion: '9.0'
 settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
+  injectWorkspacePackages: true
 
 catalogs:
   default:
@@ -170,6 +171,9 @@ importers:
       typescript:
         specifier: 'catalog:'
         version: 6.0.3
+      vite-plus:
+        specifier: 'catalog:'
+        version: 0.1.20(@types/node@25.6.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0))
 
 packages:
 

@@ -68,10 +68,9 @@ export function useDeleteUser(id: string) {
       if (error.value) throw new Error();
       return data.value;
     },
-    onSuccess: () =>
-      Promise.all([
-        queryClient.invalidateQueries({ queryKey: ['users'] }),
-        queryClient.invalidateQueries({ queryKey: ['user', id] }),
-      ]),
+    onSuccess: () => {
+      queryClient.removeQueries({ queryKey: ['user', id] });
+      return queryClient.invalidateQueries({ queryKey: ['users'] });
+    },
   });
 }

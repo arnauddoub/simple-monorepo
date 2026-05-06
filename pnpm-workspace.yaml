@@ -3,6 +3,8 @@ packages:
   - frontend
   - packages/*
 
+injectWorkspacePackages: true
+
 catalog:
   typescript: ^6.0.3
   vite: npm:@voidzero-dev/vite-plus-core@latest

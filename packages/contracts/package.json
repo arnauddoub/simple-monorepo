@@ -1,10 +1,24 @@
 {
   "name": "@my-monorepo/contracts",
   "version": "0.0.0",
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "sideEffects": false,
-  "main": "src/index.ts",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "scripts": {
+    "build": "vp pack"
+  },
   "devDependencies": {
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vite-plus": "catalog:"
   }
 }
