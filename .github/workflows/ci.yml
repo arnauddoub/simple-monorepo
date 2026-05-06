@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    name: Lint, typecheck, build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build shared packages
+        run: pnpm build:packages
+
+      - name: Backend — typecheck
+        run: pnpm --filter @my-monorepo/backend typecheck
+
+      - name: Backend — lint
+        run: pnpm --filter @my-monorepo/backend lint
+
+      - name: Frontend — typecheck
+        run: pnpm --filter @my-monorepo/frontend type-check
+
+      - name: Frontend — lint
+        run: pnpm --filter @my-monorepo/frontend lint
+
+      - name: Frontend — build
+        run: pnpm --filter @my-monorepo/frontend build-only

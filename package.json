@@ -3,8 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "pnpm build:packages && vp run -r --parallel dev",
-    "build:packages": "vp run -F './packages/*' build",
-    "prepare": "vp config"
+    "build:packages": "vp run -F './packages/*' build"
   },
   "devDependencies": {
     "vite-plus": "catalog:"

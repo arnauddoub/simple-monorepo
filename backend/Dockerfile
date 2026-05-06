@@ -9,7 +9,7 @@ COPY . .
 ENV CI=true
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --ignore-scripts
 RUN pnpm build:packages
-RUN pnpm deploy --filter @my-monorepo/backend /app/output
+RUN pnpm deploy --legacy --filter @my-monorepo/backend /app/output
 WORKDIR /app/output
 RUN node ace build
 
