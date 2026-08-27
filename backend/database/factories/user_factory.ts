@@ -1,6 +1,6 @@
-import { UserRole } from '@my-monorepo/contracts'
-import factory from '@adonisjs/lucid/factories'
-import User from '#user/user_model'
+import { UserRole } from '@my-monorepo/contracts';
+import factory from '@adonisjs/lucid/factories';
+import User from '#user/user_model';
 
 export const UserFactory = factory
   .define(User, async ({ faker }) => {
@@ -9,6 +9,6 @@ export const UserFactory = factory
       email: faker.internet.email(),
       password: 'password',
       role: UserRole.USER,
-    }
+    };
   })
-  .build()
+  .build();

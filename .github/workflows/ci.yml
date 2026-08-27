@@ -25,17 +25,14 @@ jobs:
       - name: Build shared packages
         run: pnpm build:packages
 
+      - name: Lint, format, type-aware check (whole workspace)
+        run: pnpm exec vp check
+
       - name: Backend — typecheck
         run: pnpm --filter @my-monorepo/backend typecheck
 
-      - name: Backend — lint
-        run: pnpm --filter @my-monorepo/backend lint
-
       - name: Frontend — typecheck
         run: pnpm --filter @my-monorepo/frontend type-check
-
-      - name: Frontend — lint
-        run: pnpm --filter @my-monorepo/frontend lint
 
       - name: Frontend — build
         run: pnpm --filter @my-monorepo/frontend build-only

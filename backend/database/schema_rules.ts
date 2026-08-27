@@ -1,4 +1,4 @@
-import { type SchemaRules } from '@adonisjs/lucid/types/schema_generator'
+import { type SchemaRules } from '@adonisjs/lucid/types/schema_generator';
 
 export default {
   tables: {
@@ -12,4 +12,4 @@ export default {
       },
     },
   },
-} satisfies SchemaRules
+} satisfies SchemaRules;

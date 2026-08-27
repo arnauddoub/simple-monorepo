@@ -16,21 +16,27 @@ The frontend consumes the backend's API types via the auto-generated **Tuyau** r
 
 ## Tooling
 
-This workspace uses **Vite+** (`vp` CLI) for the frontend and shared workspace config (lint, format, dev orchestration). The backend keeps the official AdonisJS toolchain (`@adonisjs/eslint-config`, `@adonisjs/prettier-config`) — `vp check` ignores `backend/**` by config.
+The whole workspace (backend, frontend, packages) uses **Vite+** (`vp` CLI): Oxlint for linting, Oxfmt for formatting, type-aware checks via `vp check`. Everything is configured in the root `vite.config.ts` — there is no ESLint or Prettier anywhere in the repo.
+
+- One code style for the whole monorepo: single quotes, semicolons (Oxfmt defaults + `singleQuote`).
+- The rules from the former `@adonisjs/eslint-config` preset that matter (`curly`, `eqeqeq`, `unicorn/filename-case` in snake_case, `unicorn/prefer-node-protocol`, …) live in a `backend/**/*.ts` override in `vite.config.ts`.
+- Generated code (`**/.adonisjs/**`, `backend/database/schema.ts`, `backend/build`, `backend/tmp`) is excluded from lint and format.
+- The `staged` hook runs `vp check --fix` on every staged file, backend included.
 
 ## Commands
 
-|                                                  | Command                                                 |
-| ------------------------------------------------ | ------------------------------------------------------- |
-| Install dependencies                             | `vp install`                                            |
-| Run dev (both backend + frontend in parallel)    | `pnpm dev` (alias for `vp run -r --parallel dev`)       |
-| Lint + format + typecheck (frontend + contracts) | `vp check`                                              |
-| Auto-fix lint/format                             | `vp check --fix`                                        |
-| Run tests                                        | `vp test`                                               |
-| Frontend production build                        | `pnpm --filter @my-monorepo/frontend build`             |
-| Backend lint / format                            | `pnpm --filter @my-monorepo/backend lint`, `... format` |
-| Backend dev only                                 | `pnpm --filter @my-monorepo/backend dev`                |
-| Generate Lucid schema after migration            | `cd backend && node ace schema:generate`                |
+|                                                    | Command                                           |
+| -------------------------------------------------- | ------------------------------------------------- |
+| Install dependencies                               | `vp install`                                      |
+| Run dev (both backend + frontend in parallel)      | `pnpm dev` (alias for `vp run -r --parallel dev`) |
+| Lint + format + type-aware check (whole workspace) | `vp check`                                        |
+| Auto-fix lint/format                               | `vp check --fix`                                  |
+| Run tests                                          | `vp test`                                         |
+| Frontend production build                          | `pnpm --filter @my-monorepo/frontend build`       |
+| Backend typecheck (tsc)                            | `pnpm --filter @my-monorepo/backend typecheck`    |
+| Backend tests (Japa)                               | `pnpm --filter @my-monorepo/backend test`         |
+| Backend dev only                                   | `pnpm --filter @my-monorepo/backend dev`          |
+| Generate Lucid schema after migration              | `cd backend && node ace schema:generate`          |
 
 ## Architectural conventions
 
@@ -42,6 +48,8 @@ This workspace uses **Vite+** (`vp` CLI) for the frontend and shared workspace c
 - No repositories — Lucid is the data layer.
 - Validators use Vine's native `.unique()`. Pass `meta` via `request.validateUsing(validator, { meta })` for context-aware rules (e.g. excluding the current user on update).
 - Routes named explicitly (`.as('users.show')`) for Tuyau's typed registry.
+- Controllers are imported lazily in `start/routes.ts` (`const X = () => import('#user/controllers/x')`) — required by hot-hook HMR. This used to be enforced by the AdonisJS ESLint plugin; it is now a convention only.
+- Backend file names are `snake_case` (enforced by `unicorn/filename-case`). Classes injected via `@inject()` must be imported as values, never `import type`, or decorator metadata breaks DI.
 
 **Frontend (`src/modules/<feature>/`)**
 

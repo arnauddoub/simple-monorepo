@@ -1,23 +1,23 @@
-import { BaseSchema } from '@adonisjs/lucid/schema'
-import { UserRole } from '@my-monorepo/contracts'
+import { BaseSchema } from '@adonisjs/lucid/schema';
+import { UserRole } from '@my-monorepo/contracts';
 
 export default class extends BaseSchema {
-  protected tableName = 'users'
+  protected tableName = 'users';
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.uuid('id').primary().defaultTo(this.raw('gen_random_uuid()'))
-      table.string('full_name').notNullable()
-      table.string('email', 254).notNullable().unique()
-      table.string('password').notNullable()
-      table.enu('role', Object.values(UserRole)).notNullable().defaultTo(UserRole.USER)
+      table.uuid('id').primary().defaultTo(this.raw('gen_random_uuid()'));
+      table.string('full_name').notNullable();
+      table.string('email', 254).notNullable().unique();
+      table.string('password').notNullable();
+      table.enu('role', Object.values(UserRole)).notNullable().defaultTo(UserRole.USER);
 
-      table.timestamp('created_at').notNullable()
-      table.timestamp('updated_at').nullable()
-    })
+      table.timestamp('created_at').notNullable();
+      table.timestamp('updated_at').nullable();
+    });
   }
 
   async down() {
-    this.schema.dropTable(this.tableName)
+    this.schema.dropTable(this.tableName);
   }
 }
